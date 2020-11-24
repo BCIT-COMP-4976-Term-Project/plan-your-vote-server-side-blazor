@@ -181,3 +181,249 @@ app {
         display: block;
     }
 }
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+  }
+  
+  /* Provide sufficient contrast against white background */
+  a {
+    color: #0366d6;
+  }
+  
+  .title {
+    font-size: 3em;
+    border-bottom: none;
+    padding-left: 0;
+    width: 75%;
+    margin: 0 auto;
+    color: #e60050;
+    text-align: center;
+    line-height: 1.2;
+    font-weight: 700;
+    /* font-family: "Lato", "sans-serif"; */
+    box-sizing: border-box;
+  }
+  
+  .heading1 {
+    text-align: center;
+      /* font-weight: normal; */
+      font-size: 1.5em;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+      font-weight: 400;
+      line-height: 1.5;
+  }
+  
+  .top-container {
+    margin: 0 auto;
+      width: 80%;
+      box-sizing: border-box;
+      display: block;
+      font-family: "Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      text-align: left;
+  }
+  
+  .middle-container {
+    clear: both;
+    box-sizing: border-box;
+    display: block;
+    font-family: "Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+  }
+  .reassurance{
+    text-align: center;
+    text-transform: uppercase;
+    color: #666;
+    font-size: 0.875em;
+    /* font-family: "Noto Sans", "sans-serif"; */
+  
+  }
+  .note{
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0 8%;
+    color: #666;
+    /* font-family: "Noto Sans", "sans-serif"; */
+    box-sizing: border-box;
+    font-weight: 400;
+      line-height: 1.5;
+  
+  }
+  .to-election-site {
+    position: relative;
+    display: block;
+    width: 30em;
+    margin: 1.5em auto 0;
+    font-size: 1em;
+    text-align: center;
+    max-width: 88%;
+    color: #333333;
+    box-sizing: border-box;
+    font-weight: 400;
+      line-height: 1.5;
+  }
+  .first-container {
+    margin-bottom: 3em;
+    text-align: center;
+    box-sizing: border-box;
+      float: left;
+      border-bottom: none;
+      width: 50%;
+      padding-right: 2em;
+      display: block;
+      font-family:"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+  }
+  .second-container {
+    padding-bottom: 0;
+      text-align: left;
+      margin-bottom: 3em;
+      overflow: auto;
+      position: relative;
+      box-sizing: border-box;
+      padding-left: 2em;
+      padding-bottom: 5em;
+      border-bottom: none;
+      text-align: center;
+      float: right;
+      width: 50%;
+      padding-right: 2em;
+      display: block;
+      font-family: "Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+  }
+  .red-btn {
+    display: block;
+    clear: both;
+    box-sizing: border-box;
+    width: 350px;
+    margin: 0 auto 2.5em;
+    padding: 0;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background: url(https://vancouver.ca/plan-your-vote/img/get-started.png) no-repeat;
+    background-size: contain;
+    height: 54px;
+    letter-spacing: 2px;
+  }
+  .intro-tips {
+    margin-bottom: 0;
+      padding-left: 1em;
+      text-align: left;
+      list-style: none;
+      margin: 0 0 3em;
+      padding: 0;
+      overflow: auto;
+      box-sizing: border-box;
+      font-family: "Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+  }
+  
+  .list-item {
+    display: list-item;
+      float: none;
+      width: auto;
+      margin: 0 0 2em 0;
+      padding: 0 0 0 3em;
+      text-align: left;
+      box-sizing: border-box;
+      font-family: "Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+  }
+  
+  .text {
+    font-weight: 500;
+    padding-top: 10px;
+    font-size: 22px;
+      color: white;
+      text-align: center;
+      letter-spacing: 2px;
+      display: inline-block;
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+  }
+  
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+  }
+  
+  /* Sticky footer styles
+  -------------------------------------------------- */
+  html {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .border-top {
+    border-top: 1px solid #e5e5e5;
+  }
+  .border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+  
+  button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+  }
+  
+  /* Sticky footer styles
+  -------------------------------------------------- */
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+  }
+  
