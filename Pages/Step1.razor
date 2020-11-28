@@ -1,0 +1,93 @@
+@page "/selection/step1"
+
+
+@using System.Text.Json
+@using System.Net.Http;
+@using Microsoft.AspNetCore.Mvc;
+
+@if (Loading)
+{
+    <div class="alert alert-warning">Loading...</div>
+}
+@if (Error)
+{
+    <div class="alert alert-danger">@ErrorMessage</div>
+}
+@if (!Loading && !Error)
+{
+    <div class="main">
+    <h1 style="color: red">Plan Your Vote</h1>
+    <div style="margin-bottom: 5%">
+        <a style="margin-right: 10px" href="./selection/step1">Step 1</a>
+        <a style="margin-right: 10px" href="./selection/step2">Step 2</a>
+        <a style="margin-right: 10px" href="./selection/step3">Step 3</a>
+        <a style="margin-right: 10px" href="./selection/step4">Step 4</a>
+    </div>
+    <div style="margin-bottom: 2%">
+        <h2 style="color: red">@race_result.RootElement.GetProperty("votingPage").GetProperty("PageTitle").ToString()</h2>
+        <p>
+           @race_result.RootElement.GetProperty("votingPage").GetProperty("PageDescription").ToString()
+        </p>
+    </div>
+    <div style="margin-bottom: 4%; display: flex; flex-direction: 'row'; justify-content: space-between">
+        <p>Filter By:</p>
+        <select style="width: 70%" name="filter" id="filter" @bind='@Filter'>
+            <option value="AllRaces">All Races</option>
+            <option value="Mayor">Mayor</option>
+            <option value="Councillor">Councillors</option>
+            <option value="Park Board commissioner">Park Commissioners</option>
+            <option value="School trustee">School Trustees</option>
+        </select>
+    </div>
+    @foreach(var race in races){
+        <CandidateTable race=@race/>
+    }
+</div>
+
+}
+
+
+
+ @code {
+    
+    
+    public bool Loading;
+    public string ErrorMessage;
+    public bool Error => !string.IsNullOrWhiteSpace(ErrorMessage);
+    public JsonDocument race_result;
+    public JsonElement[] races;
+
+
+    public string filter;
+    public string Filter { get => filter; set{
+        filter = value;
+        Console.Write(value);
+    }}
+    
+    protected override async Task OnInitializedAsync()
+    {
+    Loading = true;
+    try
+    {
+        var client = new HttpClient();
+
+        var result = await client.GetAsync("https://vote-cms.azurewebsites.net/api/races");
+        result.EnsureSuccessStatusCode();
+        race_result = JsonDocument.Parse(await result.Content.ReadAsStringAsync());
+        races = new JsonElement[race_result.RootElement.GetProperty("races").GetArrayLength()];
+        foreach(var race in race_result.RootElement.GetProperty("races").EnumerateArray()){
+            races[race.GetProperty("BallotOrder").GetInt16()-1] = race;
+        }
+    }
+    catch (Exception ex)
+    {
+        ErrorMessage = ex.Message;
+    }
+    finally
+    {
+        Loading = false;
+    }
+    await base.OnInitializedAsync();
+    }
+        
+ }
