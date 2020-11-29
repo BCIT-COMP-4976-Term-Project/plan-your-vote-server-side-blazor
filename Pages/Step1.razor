@@ -43,6 +43,9 @@
         if(filter == @race.GetProperty("PositionName").ToString()) {
             <CandidateTable race=@race/>  
         } 
+        if(filter == "AllRaces") {
+            <CandidateTable race=@race/>
+        }
     }
 </div>
 
