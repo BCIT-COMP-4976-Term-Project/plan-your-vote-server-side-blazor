@@ -40,6 +40,8 @@ namespace plan_your_vote_server_side_blazor
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
+            services.AddScoped<AppDataService.Services.AppData>();
+            services.AddSingleton<AppDataService.Services.AppData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

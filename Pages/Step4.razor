@@ -1,4 +1,6 @@
 @page "/selection/step4"
+@using Data
+@inject AppDataService.Services.AppData AppData
 
 <div class="main">
     <h1 style="color: red">Plan Your Vote</h1>
@@ -24,7 +26,12 @@
                 <th>Biography</th>
                 <th></th>
             </tr>
-            
+            <tr style="border-bottom: solid 1px gray">
+                <td style="padding: 10px;">@AppData.mayor.firstName</td>
+                <td style="padding: 10px;">@AppData.mayor.lastName</td>
+                <td style="padding: 10px;"><img src=@AppData.mayor.image></td>
+                <td style="padding: 10px;">@AppData.mayor.bio</td>
+            </tr>
         </table>
     </div>
     <div style="margin-bottom: 3%">
@@ -37,6 +44,15 @@
                 <th>Biography</th>
                 <th></th>
             </tr>
+            @* @foreach (Person p in AppData.councillor)
+            {
+                <tr style="border-bottom: solid 1px gray">
+                <td style="padding: 10px;">@p.firstName</td>
+                <td style="padding: 10px;">@p.lastName</td>
+                <td style="padding: 10px;"><img src=@p.image></td>
+                <td style="padding: 10px;">@p.bio</td>
+                </tr>
+            } *@
         </table>
     </div>
     <div style="margin-bottom: 3%">
@@ -63,4 +79,7 @@
             </tr>
         </table>
     </div>
+
+    <p>@AppData.q1</p>
+    <p>@AppData.q2</p>
 </div>
