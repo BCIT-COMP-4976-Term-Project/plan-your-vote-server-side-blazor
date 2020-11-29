@@ -1,0 +1,42 @@
+@using System.Text.Json
+<div style="margin-bottom: 2%">
+    <h3 style="color: red">@race.GetProperty("PositionName").ToString()</h3>
+    <p style="border-bottom: solid 1px gray; padding-bottom: 15px;">For this election, please select <b>@race.GetProperty("NumberNeeded").GetInt16()</b> candidate</p>
+    <table style="width:100%">
+        <tr style="border-bottom: solid 1px gray;">
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Picture</th>
+            <th>Biography</th>
+            <th></th>
+        </tr>
+        @foreach(var candidate in race.GetProperty("Candidates").EnumerateArray()){
+            var fullName = candidate.GetProperty("Name").ToString().Split(" ");
+            var firstName = fullName[0];
+            var lastName = "";
+            if(fullName.Length > 1){
+                lastName = fullName[1];
+            }
+            var image = "https://vote-cms.azurewebsites.net/" + candidate.GetProperty("Picture").ToString();
+            var bio = "";
+            foreach(var detail in candidate.GetProperty("Details").EnumerateArray()){
+                if(detail.GetProperty("Title").ToString().Equals("Biography")){
+                    bio = detail.GetProperty("Text").ToString();
+                }
+            }
+            <tr style="border-bottom: solid 1px gray">
+                <td style="padding: 10px;">@firstName</td>
+                <td style="padding: 10px;">@lastName</td>
+                <td style="padding: 10px;"><img src=@image></td>
+                <td style="padding: 10px;">@bio</td>
+                <td style="padding: 10px;"><button type="button" class="btn btn-secondary">Select</button></td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@code {
+    [Parameter]
+    public JsonElement race { get; set; }
+}
