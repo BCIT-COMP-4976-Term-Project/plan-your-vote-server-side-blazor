@@ -40,7 +40,9 @@
         </select>
     </div>
     @foreach(var race in races){
-        <CandidateTable race=@race/>
+        if(filter == @race.GetProperty("PositionName").ToString()) {
+            <CandidateTable race=@race/>  
+        } 
     }
 </div>
 
