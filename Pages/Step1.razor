@@ -40,7 +40,12 @@
         </select>
     </div>
     @foreach(var race in races){
-        <CandidateTable race=@race/>
+        if(filter == @race.GetProperty("PositionName").ToString()) {
+            <CandidateTable race=@race/>  
+        } 
+        if(filter == "AllRaces") {
+            <CandidateTable race=@race/>
+        }
     }
 </div>
 
@@ -58,7 +63,7 @@
     public JsonElement[] races;
 
 
-    public string filter;
+    public string filter = "AllRaces";
     public string Filter { get => filter; set{
         filter = value;
         Console.Write(value);

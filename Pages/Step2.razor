@@ -1,4 +1,5 @@
 @page "/selection/step2"
+@inject AppDataService.Services.AppData AppData
 
 <div class="main">
     <h1 style="color: red">Plan Your Vote</h1>
@@ -27,9 +28,9 @@
             further assent of the electors, to pass bylaws between January 1, 2019, and December 31, 2022, to borrow an
             aggregate $100,353,000 for the following purposes?
         </p>
-        <input type="radio" name="Transportation" value="Yes">
+        <input type="radio" name="Transportation" value="Yes" id="Yes" @onchange="SelectionChanged">
         <label for="Yes">Yes</label><br>
-        <input type="radio" name="Transportation" value="No">
+        <input type="radio" name="Transportation" value="No" id="No" @onchange="SelectionChanged">
         <label for="No">No</label><br>
     </div>
     <div style="margin-bottom: 2%">
@@ -42,9 +43,24 @@
             electors, to pass bylaws between January 1, 2019, and December 31, 2022, to borrow an aggregate $99,557,000
             for the following purposes?
         </p>
-        <input type="radio" name="Maintenance" value="Yes">
+        <input type="radio" name="Maintenance" value="Yes" id="Yes" @onchange="SelectionChanged1">
         <label for="Yes">Yes</label><br>
-        <input type="radio" name="Maintenance" value="No">
+        <input type="radio" name="Maintenance" value="No" id="No" @onchange="SelectionChanged1">
         <label for="No">No</label><br>
     </div>
 </div>
+
+
+@code {
+    void SelectionChanged(ChangeEventArgs args)
+    {
+        AppData.q1 = args.Value.ToString();
+    }
+
+    void SelectionChanged1(ChangeEventArgs args)
+    {
+        AppData.q2 = args.Value.ToString();
+    }
+
+
+}
