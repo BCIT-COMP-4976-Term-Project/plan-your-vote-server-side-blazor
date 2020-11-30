@@ -1,20 +1,22 @@
 using System;
+using System.Collections.Generic;
 using plan_your_vote_server_side_blazor.Data;
+
 
 namespace AppDataService.Services
 {
     public class AppData
     {
-        public string q1 { get; set; }
+        public string q1 = "Unanswered";
 
-        public string q2 { get; set; }
+        public string q2 = "Unanswered";
 
-        public Person mayor { get; set;}
+        public Person mayor = new Person();
 
-        public Person[] councillor {get; set;}
+        public List<Person> councillor = new List<Person>();
 
-        public Person[] park {get; set;}
-
-        public Person[] school {get; set;}
+        public List<Person> park = new List<Person>();
+        
+        public List<Person> school = new List<Person>();
     }
 }

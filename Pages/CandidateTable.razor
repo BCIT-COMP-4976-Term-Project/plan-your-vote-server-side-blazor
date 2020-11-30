@@ -1,6 +1,8 @@
 @using System.Text.Json
 @using Data
 @inject AppDataService.Services.AppData AppData
+@inject IJSRuntime jsRuntime
+
 
 <div style="margin-bottom: 2%">
     <h3 style="color: red">@race.GetProperty("PositionName").ToString()</h3>
@@ -14,6 +16,7 @@
             <th></th>
         </tr>
         @foreach(var candidate in race.GetProperty("Candidates").EnumerateArray()){
+            var id = "C" + candidate.GetProperty("CandidateId").ToString();
             var fullName = candidate.GetProperty("Name").ToString().Split(" ");
             var firstName = fullName[0];
             var lastName = "";
@@ -32,7 +35,7 @@
                 <td style="padding: 10px;">@lastName</td>
                 <td style="padding: 10px;"><img src=@image></td>
                 <td style="padding: 10px;">@bio</td>
-                <td style="padding: 10px;"><button type="button" class="btn btn-secondary" @onclick="@(e => handleClick(firstName, lastName, image, bio))">Select</button></td>
+                <td style="padding: 10px;"><button id="@id" type="button" class="btn btn-secondary" @onclick="@(e => handleClick(firstName, lastName, image, bio, id))">Select</button></td>
             </tr>
         }
 
@@ -42,10 +45,14 @@
 @code {
     [Parameter]
     public JsonElement race { get; set; }
-
-    private void handleClick(string first, string last, string image, string bio) {
+  
+    private async void handleClick(string first, string last, string image, string bio, string id) {
         Person p1 = new Person();
+        
+        await jsRuntime.InvokeAsync<object>("accessDOMElement", id);
+
         if(race.GetProperty("PositionName").ToString() == "Mayor") {
+            p1.id = id;
             p1.firstName = first;
             p1.lastName = last;
             p1.image = image;
@@ -53,25 +60,28 @@
             AppData.mayor = p1;  
         }
         else if(race.GetProperty("PositionName").ToString() == "Councillor") {
+            p1.id = id;
             p1.firstName = first;
             p1.lastName = last;
             p1.image = image;
             p1.bio = bio;
-            AppData.councillor.Append(p1);
+            AppData.councillor.Add(p1);
         }
         else if(race.GetProperty("PositionName").ToString() == "Park Board commissioner") {
+            p1.id = id;
             p1.firstName = first;
             p1.lastName = last;
             p1.image = image;
             p1.bio = bio;
-            AppData.park.Append(p1);
+            AppData.park.Add(p1);
         }
         else if(race.GetProperty("PositionName").ToString() == "School trustee") {
+            p1.id = id;
             p1.firstName = first;
             p1.lastName = last;
             p1.image = image;
             p1.bio = bio;
-            AppData.school.Append(p1);
+            AppData.school.Add(p1);
         }
     }
 

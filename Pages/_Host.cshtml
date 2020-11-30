@@ -1,9 +1,23 @@
 ﻿@page "/"
 @namespace plan_your_vote_server_side_blazor.Pages
+@inject AppDataService.Services.AppData AppData
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
 }
+
+<script>
+function accessDOMElement(id) {
+    @{
+        AppData.mayor.firstName = "test";
+    }
+    var btn;
+    btn = document.getElementById(id);
+    btn.innerText = btn.innerHTML == "Select" ? "Cancel" : "Select";
+    console.log("@AppData.mayor.firstName");
+}
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
