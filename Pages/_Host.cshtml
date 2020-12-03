@@ -8,19 +8,17 @@
 }
 
 <script>
-function accessDOMElement(id) {
-    @{
-        AppData.mayor.firstName = "test";
+    function accessDOMElement(id) {
+        var btn;
+        btn = document.getElementById(id);
+        btn.innerText = btn.innerHTML == "Select" ? "Cancel" : "Select";
+        //console.log("@AppData.mayor.firstName");
     }
-    var btn;
-    btn = document.getElementById(id);
-    btn.innerText = btn.innerHTML == "Select" ? "Cancel" : "Select";
-    console.log("@AppData.mayor.firstName");
-}
 </script>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,6 +27,7 @@ function accessDOMElement(id) {
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
 </head>
+
 <body>
     <app>
         <component type="typeof(App)" render-mode="ServerPrerendered" />
@@ -47,4 +46,5 @@ function accessDOMElement(id) {
 
     <script src="_framework/blazor.server.js"></script>
 </body>
+
 </html>
